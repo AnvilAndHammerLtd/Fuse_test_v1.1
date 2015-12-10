@@ -1,19 +1,22 @@
 package com.kyriakosalexandrou.fuse_test_v11;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
+
+import retrofit.RestAdapter;
+
+
 public class MainActivity extends AppCompatActivity implements IuiHelper {
+    public static final String BASE_URL = "https:/";
     private static final String TAG = MainActivity.class.getName();
     private EditText mCompanyNameUserInput;
+    private RestAdapter mRestAdapter;
 
 
     @Override
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements IuiHelper {
 
         bindViews();
         setListeners();
+
+        mRestAdapter = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL).setEndpoint(BASE_URL).build();
     }
 
     @Override
@@ -35,17 +40,23 @@ public class MainActivity extends AppCompatActivity implements IuiHelper {
         mCompanyNameUserInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                Log.v(TAG, "kiki onEditorAction");
 
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_DONE:
-                        // TODO send request
+                        String companyNameWithoutSpaces = Util.cleanTextFromSpaces(v);
+                        getCompany(companyNameWithoutSpaces);
                         return true;
                     default:
                         return false;
                 }
-
             }
         });
+    }
+
+    private void getCompany(String companyName) {
+        if (companyName.length() > 0) {
+            CompanyService mCompanyService = new CompanyService(mRestAdapter);
+            mCompanyService.getCompanyRequest(companyName);
+        }
     }
 }
