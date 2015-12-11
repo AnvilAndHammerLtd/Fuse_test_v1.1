@@ -17,13 +17,21 @@ public class Util {
 
         if (view != null) {
             textWithoutSpaces = view.getText().toString();
-            textWithoutSpaces.trim();
+            textWithoutSpaces = textWithoutSpaces.trim();
         }
 
         return textWithoutSpaces;
     }
 
     public static void showToastMessageCentered(Context context, int message) {
+        if (context != null) {
+            Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+    }
+
+    public static void showToastMessageCentered(Context context, String message) {
         if (context != null) {
             Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
