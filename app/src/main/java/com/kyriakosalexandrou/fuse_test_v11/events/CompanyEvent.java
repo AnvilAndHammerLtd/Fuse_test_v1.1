@@ -24,13 +24,4 @@ public class CompanyEvent{
     public void setCompany(Company mCompany) {
         this.mCompany = mCompany;
     }
-
-
-
-
-
-
-
-
-
 }

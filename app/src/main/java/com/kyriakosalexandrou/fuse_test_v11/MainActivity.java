@@ -3,6 +3,8 @@ package com.kyriakosalexandrou.fuse_test_v11;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,8 +23,13 @@ import retrofit.RestAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements CommonUiLogicHelper {
-    public static final String BASE_URL = "https:/";
     private static final String TAG = MainActivity.class.getName();
+    public static final String BASE_URL = "https:/";
+
+    public static final int DEFAULT_COMPANY_BG_COLOR = Color.WHITE;
+    public static final int VALID_COMPANY_BG_COLOR = Color.GREEN;
+    public static final int INVALID_COMPANY_BG_COLOR = Color.RED;
+
     private EditText mCompanyNameUserInput;
     private RestAdapter mRestAdapter;
     private ImageView mCompanyImage;
@@ -47,7 +54,22 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     @Override
     public void setListeners() {
+
+        mCompanyNameUserInput.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                setCompanyUiToDefault();
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
         mCompanyNameUserInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
@@ -63,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
         });
     }
 
+    private void setCompanyUiToDefault() {
+        mCompanyNameUserInput.setBackgroundColor(DEFAULT_COMPANY_BG_COLOR);
+        mCompanyImage.setVisibility(View.INVISIBLE);
+    }
+
     private void getCompany(String companyName) {
         if (companyName.length() > 0) {
             CompanyService mCompanyService = new CompanyService(mRestAdapter);
@@ -73,20 +100,20 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     public void onEventMainThread(CompanyEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
-        setValidCompanyRequestUI(event.getCompany());
+        setCompanyUiToValid(event.getCompany());
     }
 
-    private void setValidCompanyRequestUI(Company company) {
-        setValidCompanyText(company.getName());
-        setValidCompanyLogo(company.getLogo());
+    private void setCompanyUiToValid(Company company) {
+        setCompanyTextToValid(company.getName());
+        setCompanyLogoToValid(company.getLogo());
     }
 
-    private void setValidCompanyText(String companyName) {
+    private void setCompanyTextToValid(String companyName) {
         mCompanyNameUserInput.setText(companyName);
-        mCompanyNameUserInput.setBackgroundColor(Color.GREEN);
+        mCompanyNameUserInput.setBackgroundColor(VALID_COMPANY_BG_COLOR);
     }
 
-    private void setValidCompanyLogo(String logoURL) {
+    private void setCompanyLogoToValid(String logoURL) {
         mCompanyImage.setVisibility(View.VISIBLE);
         Picasso.with(this)
                 .load(logoURL)
@@ -96,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     public void onEventMainThread(ErrorEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
         Util.showToastMessageCentered(this, event.getErrorMessage());
-        mCompanyNameUserInput.setBackgroundColor(Color.RED);
+        mCompanyNameUserInput.setBackgroundColor(INVALID_COMPANY_BG_COLOR);
     }
 
     @Override
