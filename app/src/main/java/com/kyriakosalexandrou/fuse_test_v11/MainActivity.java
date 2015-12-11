@@ -17,7 +17,7 @@ import de.greenrobot.event.EventBus;
 import retrofit.RestAdapter;
 
 
-public class MainActivity extends AppCompatActivity implements IuiHelper {
+public class MainActivity extends AppCompatActivity implements CommonUiLogicHelper {
     public static final String BASE_URL = "https:/";
     private static final String TAG = MainActivity.class.getName();
     private EditText mCompanyNameUserInput;
