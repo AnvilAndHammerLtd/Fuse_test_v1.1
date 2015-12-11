@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
+import com.squareup.picasso.Picasso;
 
 import de.greenrobot.event.EventBus;
 import retrofit.RestAdapter;
@@ -71,9 +73,24 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     public void onEventMainThread(CompanyEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
-        Company company = event.getCompany();
-        mCompanyNameUserInput.setText(company.getName());
+        setValidCompanyRequestUI(event.getCompany());
+    }
+
+    private void setValidCompanyRequestUI(Company company) {
+        setValidCompanyText(company.getName());
+        setValidCompanyLogo(company.getLogo());
+    }
+
+    private void setValidCompanyText(String companyName) {
+        mCompanyNameUserInput.setText(companyName);
         mCompanyNameUserInput.setBackgroundColor(Color.GREEN);
+    }
+
+    private void setValidCompanyLogo(String logoURL) {
+        mCompanyImage.setVisibility(View.VISIBLE);
+        Picasso.with(this)
+                .load(logoURL)
+                .into(mCompanyImage);
     }
 
     public void onEventMainThread(ErrorEvent event) {
