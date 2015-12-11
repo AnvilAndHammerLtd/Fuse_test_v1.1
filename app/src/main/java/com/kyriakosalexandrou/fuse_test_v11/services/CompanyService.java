@@ -1,10 +1,8 @@
 package com.kyriakosalexandrou.fuse_test_v11.services;
 
-import android.app.usage.UsageEvents;
 import android.util.Log;
 
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
-import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 
 import de.greenrobot.event.EventBus;
@@ -33,15 +31,15 @@ public class CompanyService {
 
                     @Override
                     public void success(Company company, Response response) {
-                        Log.v(TAG, "success");
+                        Log.v(TAG, "getCompanyRequest success");
                         event.setCompany(company);
                         EventBus.getDefault().postSticky(event);
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        Log.v(TAG, "failure");
-                        EventBus.getDefault().postSticky(new ErrorEvent("Failed to receive company details"));
+                        Log.v(TAG, "getCompanyRequest failure");
+                        EventBus.getDefault().postSticky(event.getErrorEvent());
                     }
                 }
         );

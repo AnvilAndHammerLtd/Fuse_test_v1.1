@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     private void getCompany(String companyName) {
         if (companyName.length() > 0) {
             CompanyService mCompanyService = new CompanyService(mRestAdapter);
-            mCompanyService.getCompanyRequest(companyName, new CompanyEvent());
+            ErrorEvent errorEvent = new ErrorEvent(getResources().getString(R.string.get_company_request_failure));
+            mCompanyService.getCompanyRequest(companyName, new CompanyEvent(errorEvent));
         }
     }
 

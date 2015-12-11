@@ -1,8 +1,6 @@
 package com.kyriakosalexandrou.fuse_test_v11;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
