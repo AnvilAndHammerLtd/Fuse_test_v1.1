@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,10 +14,20 @@
         android:id="@+id/company_name_user_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:hint="@string/company_name_user_input_hint"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:text="" />
+
+    <ImageView
+        android:id="@+id/company_image"
+        android:layout_width="@dimen/company_image_size"
+        android:layout_height="@dimen/company_image_size"
+        android:layout_below="@id/company_name_user_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/company_image_top_margin"
+        android:visibility="invisible"
+        tools:src="@android:color/holo_orange_dark"
+        tools:visibility="visible" />
 
 </RelativeLayout>

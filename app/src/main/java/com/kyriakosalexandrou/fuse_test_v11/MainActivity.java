@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     private static final String TAG = MainActivity.class.getName();
     private EditText mCompanyNameUserInput;
     private RestAdapter mRestAdapter;
+    private ImageView mCompanyImage;
 
 
     @Override
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     @Override
     public void bindViews() {
         mCompanyNameUserInput = (EditText) findViewById(R.id.company_name_user_input);
+        mCompanyImage = (ImageView) findViewById(R.id.company_image);
     }
 
     @Override
