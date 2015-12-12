@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     private EditText mCompanyNameUserInput;
     private RestAdapter mRestAdapter;
     private ImageView mCompanyImage;
+    private ProgressBar mProgressBar;
 
 
     @Override
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     public void bindViews() {
         mCompanyNameUserInput = (EditText) findViewById(R.id.company_name_user_input);
         mCompanyImage = (ImageView) findViewById(R.id.company_image);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
     }
 
     @Override
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     private void getCompany(String companyName) {
         if (companyName.length() > 0) {
+            mProgressBar.setVisibility(View.VISIBLE);
             CompanyService mCompanyService = new CompanyService(mRestAdapter);
             ErrorEvent errorEvent = new ErrorEvent(getResources().getString(R.string.get_company_request_failure));
             mCompanyService.getCompanyRequest(companyName, new CompanyEvent(errorEvent));
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     public void onEventMainThread(CompanyEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
         setCompanyUiToValid(event.getCompany());
+        mProgressBar.setVisibility(View.GONE);
         Util.hideSoftKeyBoard(this);
     }
 
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     public void onEventMainThread(ErrorEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
+        mProgressBar.setVisibility(View.GONE);
         Util.showToastMessageCentered(this, event.getErrorMessage());
         mCompanyNameUserInput.setBackgroundColor(INVALID_COMPANY_BG_COLOR);
     }
