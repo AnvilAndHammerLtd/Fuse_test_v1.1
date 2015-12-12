@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
     public void onEventMainThread(CompanyEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
         setCompanyUiToValid(event.getCompany());
+        Util.hideSoftKeyBoard(this);
     }
 
     private void setCompanyUiToValid(Company company) {
