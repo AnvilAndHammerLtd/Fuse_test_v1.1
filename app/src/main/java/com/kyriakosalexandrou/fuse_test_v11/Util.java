@@ -40,7 +40,7 @@ public class Util {
         }
     }
 
-    public static void hideSoftKeyBoard(Activity activity) {
+    public static void dismissSoftKeyBoard(Activity activity) {
         View view = activity.getWindow().getCurrentFocus();
 
         if (view != null) {

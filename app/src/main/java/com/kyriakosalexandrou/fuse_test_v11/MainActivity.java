@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     private void getCompany(String companyName) {
         if (companyName.length() > 0) {
+            Util.dismissSoftKeyBoard(this);
             mProgressBar.setVisibility(View.VISIBLE);
             CompanyService mCompanyService = new CompanyService(mRestAdapter);
             ErrorEvent errorEvent = new ErrorEvent(getResources().getString(R.string.get_company_request_failure));
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
         EventBus.getDefault().removeStickyEvent(event);
         setCompanyUiToValid(event.getCompany());
         mProgressBar.setVisibility(View.GONE);
-        Util.hideSoftKeyBoard(this);
     }
 
     private void setCompanyUiToValid(Company company) {
