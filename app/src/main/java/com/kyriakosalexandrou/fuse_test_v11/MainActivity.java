@@ -54,7 +54,11 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
 
     @Override
     public void setListeners() {
+        setCompanyNameUserInputTextChangedListener();
+        setCompanyNameUserInputOnEditorActionListener();
+    }
 
+    private void setCompanyNameUserInputTextChangedListener() {
         mCompanyNameUserInput.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -67,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements CommonUiLogicHelp
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
+    }
 
+    private void setCompanyNameUserInputOnEditorActionListener() {
         mCompanyNameUserInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
