@@ -1,4 +1,4 @@
-package com.kyriakosalexandrou.fuse_test_v11;
+package com.kyriakosalexandrou.fuse_test_v11.interfaces;
 
 import android.view.View;
 

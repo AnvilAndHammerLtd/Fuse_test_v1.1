@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.kyriakosalexandrou.fuse_test_v11.fragments.CompanyFragment;
+import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonActivityUiLogicHelper;
+import com.kyriakosalexandrou.fuse_test_v11.interfaces.HasProgressBar;
 
 import retrofit.RestAdapter;
 

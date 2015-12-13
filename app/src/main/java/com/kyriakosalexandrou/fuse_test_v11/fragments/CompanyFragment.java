@@ -15,8 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kyriakosalexandrou.fuse_test_v11.CommonFragmentUiLogicHelper;
-import com.kyriakosalexandrou.fuse_test_v11.HasProgressBar;
+import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonFragmentUiLogicHelper;
+import com.kyriakosalexandrou.fuse_test_v11.interfaces.HasProgressBar;
 import com.kyriakosalexandrou.fuse_test_v11.MainActivity;
 import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;

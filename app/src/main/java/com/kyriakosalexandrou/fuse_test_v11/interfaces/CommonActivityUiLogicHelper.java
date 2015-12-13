@@ -1,4 +1,4 @@
-package com.kyriakosalexandrou.fuse_test_v11;
+package com.kyriakosalexandrou.fuse_test_v11.interfaces;
 
 /**
  * Created by Kyriakos on 10/12/2015.
