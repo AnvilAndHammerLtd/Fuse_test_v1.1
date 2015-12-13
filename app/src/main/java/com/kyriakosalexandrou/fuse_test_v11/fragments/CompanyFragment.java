@@ -40,8 +40,8 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     public static final int VALID_COMPANY_BG_COLOR = Color.GREEN;
     public static final int INVALID_COMPANY_BG_COLOR = Color.RED;
 
-    public static float ENABLED_CLEAR_BUTTON_ALPHA = 1f;
-    public static float DISABLED_CLEAR_BUTTON_ALPHA = 0f;
+    public static float ENABLED_CLEAR_BUTTON_ALPHA;
+    public static float DISABLED_CLEAR_BUTTON_ALPHA;
 
     private EditText mCompanyNameUserInput;
     private ImageView mCompanyNameUserInputClearBtn;
@@ -55,6 +55,9 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_company, container, false);
+
+        ENABLED_CLEAR_BUTTON_ALPHA = Util.getResFloatValue(getContext(), R.dimen.enabled_clear_button_alpha);
+        DISABLED_CLEAR_BUTTON_ALPHA = Util.getResFloatValue(getContext(), R.dimen.disabled_clear_button_alpha);
 
         bindViews(view);
         setListeners();

@@ -25,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:alpha="0"
+            android:alpha="@dimen/disabled_clear_button_alpha"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
-            tools:alpha="1" />
+            tools:alpha="@dimen/enabled_clear_button_alpha" />
     </RelativeLayout>
 
     <ImageView
