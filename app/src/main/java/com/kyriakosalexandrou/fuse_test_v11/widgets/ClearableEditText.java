@@ -33,11 +33,11 @@ public class ClearableEditText extends RelativeLayout {
 
 
     public ClearableEditText(Context context) {
-        super(context, null);
+        this(context, null);
     }
 
     public ClearableEditText(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public ClearableEditText(Context context, AttributeSet attrs, int defStyle) {
