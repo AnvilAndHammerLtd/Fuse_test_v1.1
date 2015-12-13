@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/main_activity_parent"
+    android:background="@android:color/white"
     tools:context="com.kyriakosalexandrou.fuse_test_v11.MainActivity">
 
     <FrameLayout
