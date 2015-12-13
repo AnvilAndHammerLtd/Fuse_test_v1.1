@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState != null)
-            onRestoreInstanceState(savedInstanceState);
-
         bindViews();
         setListeners();
 
