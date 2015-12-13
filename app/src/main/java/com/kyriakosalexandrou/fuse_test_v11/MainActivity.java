@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         CompanyFragment companyFragment = new CompanyFragment();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment, companyFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.addToBackStack(null);
         ft.commit();
         fm.executePendingTransactions();

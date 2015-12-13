@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 /**
  * Created by Kyriakos on 10/12/2015.
+ * <p/>
+ * Useful generic re-usable methods
  */
 public class Util {
 

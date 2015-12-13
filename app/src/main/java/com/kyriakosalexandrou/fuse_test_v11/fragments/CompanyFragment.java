@@ -30,6 +30,8 @@ import de.greenrobot.event.EventBus;
 
 /**
  * Created by Kyriakos on 12/12/2015.
+ * <p/>
+ * Responsible for all the Company logic
  */
 public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHelper {
     public static final int DEFAULT_COMPANY_BG_COLOR = Color.WHITE;
@@ -40,16 +42,18 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     private ImageView mCompanyImage;
     private HasProgressBar mHasProgressBar;
 
+    public CompanyFragment() {
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company, container);
+        View view = inflater.inflate(R.layout.fragment_company, container, false);
 
         bindViews(view);
         setListeners();
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override

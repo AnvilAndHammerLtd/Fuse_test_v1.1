@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/main_activity_parent"
-    tools:context="com.kyriakosalexandrou.fuse_test_v11.MainActivity">
+    style="@style/main_activity_parent">
 
     <EditText
         android:id="@+id/company_name_user_input"
