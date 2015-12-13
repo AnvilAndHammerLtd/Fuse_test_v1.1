@@ -4,31 +4,17 @@
     style="@style/main_activity_parent"
     tools:context="com.kyriakosalexandrou.fuse_test_v11.MainActivity">
 
-    <EditText
-        android:id="@+id/company_name_user_input"
-        style="@style/edit_text"
-        android:gravity="center"
-        android:hint="@string/company_name_user_input_hint"
-        android:imeOptions="actionDone"
-        android:textSize="@dimen/text_size_large"
-        android:inputType="text" />
-
-    <ImageView
-        android:id="@+id/company_image"
-        android:layout_width="@dimen/company_image_size"
-        android:layout_height="@dimen/company_image_size"
-        android:layout_below="@id/company_name_user_input"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/company_image_top_margin"
-        android:visibility="invisible"
-        tools:src="@drawable/ic_wink"
-        tools:visibility="visible" />
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_company" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:visibility="gone"
         tools:visibility="visible" />
 
