@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState != null)
+            onRestoreInstanceState(savedInstanceState);
+
         bindViews();
         setListeners();
 
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         FragmentManager fm = getSupportFragmentManager();
         CompanyFragment companyFragment = new CompanyFragment();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment, companyFragment);
+        ft.replace(R.id.fragment, companyFragment, CompanyFragment.TAG);
         ft.addToBackStack(null);
         ft.commit();
         fm.executePendingTransactions();

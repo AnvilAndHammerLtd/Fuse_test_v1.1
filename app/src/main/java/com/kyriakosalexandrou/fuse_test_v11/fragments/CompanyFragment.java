@@ -34,6 +34,8 @@ import de.greenrobot.event.EventBus;
  * Responsible for all the Company logic
  */
 public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHelper {
+    public static final String TAG = CompanyFragment.class.getName();
+
     public static final int DEFAULT_COMPANY_BG_COLOR = Color.WHITE;
     public static final int VALID_COMPANY_BG_COLOR = Color.GREEN;
     public static final int INVALID_COMPANY_BG_COLOR = Color.RED;
