@@ -3,38 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/main_activity_parent">
 
-    <RelativeLayout
-        android:id="@+id/company_name_user_input_container"
+    <com.kyriakosalexandrou.fuse_test_v11.widgets.ClearableEditText
+        android:id="@+id/company_name_clearable_edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/company_name_user_input"
-            style="@style/edit_text"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@+id/company_name_user_input_clear_icon"
-            android:gravity="center"
-            android:hint="@string/company_name_user_input_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:textSize="@dimen/text_size_large" />
-
-        <ImageView
-            android:id="@id/company_name_user_input_clear_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:alpha="@dimen/disabled_clear_button_alpha"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            tools:alpha="@dimen/enabled_clear_button_alpha" />
-    </RelativeLayout>
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/company_image"
         android:layout_width="@dimen/company_image_size"
         android:layout_height="@dimen/company_image_size"
-        android:layout_below="@id/company_name_user_input_container"
+        android:layout_below="@id/company_name_clearable_edittext"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/company_image_top_margin"
         android:visibility="invisible"
