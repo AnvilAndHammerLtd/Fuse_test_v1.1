@@ -40,7 +40,11 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     public static final int VALID_COMPANY_BG_COLOR = Color.GREEN;
     public static final int INVALID_COMPANY_BG_COLOR = Color.RED;
 
+    public static float ENABLED_CLEAR_BUTTON_ALPHA = 1f;
+    public static float DISABLED_CLEAR_BUTTON_ALPHA = 0f;
+
     private EditText mCompanyNameUserInput;
+    private ImageView mCompanyNameUserInputClearBtn;
     private ImageView mCompanyImage;
     private HasProgressBar mHasProgressBar;
 
@@ -61,6 +65,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     @Override
     public void bindViews(View view) {
         mCompanyNameUserInput = (EditText) view.findViewById(R.id.company_name_user_input);
+        mCompanyNameUserInputClearBtn = (ImageView) view.findViewById(R.id.company_name_user_input_clear_icon);
         mCompanyImage = (ImageView) view.findViewById(R.id.company_image);
         mHasProgressBar = (HasProgressBar) getActivity();
     }
@@ -69,6 +74,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     public void setListeners() {
         setCompanyNameUserInputTextChangedListener();
         setCompanyNameUserInputOnEditorActionListener();
+        setCompanyNameUserInputClearBtnOnClickListener();
     }
 
     private void setCompanyNameUserInputTextChangedListener() {
@@ -82,8 +88,17 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                shouldShowClearBtn(count);
             }
         });
+    }
+
+    private void shouldShowClearBtn(int count) {
+        if (count > 0) {
+            mCompanyNameUserInputClearBtn.setAlpha(ENABLED_CLEAR_BUTTON_ALPHA);
+        } else {
+            mCompanyNameUserInputClearBtn.setAlpha(DISABLED_CLEAR_BUTTON_ALPHA);
+        }
     }
 
     private void setCompanyUiToDefault() {
@@ -105,6 +120,15 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
                     default:
                         return false;
                 }
+            }
+        });
+    }
+
+    private void setCompanyNameUserInputClearBtnOnClickListener() {
+        mCompanyNameUserInputClearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCompanyNameUserInput.setText("");
             }
         });
     }
