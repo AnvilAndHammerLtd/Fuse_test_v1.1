@@ -3,10 +3,7 @@ package com.kyriakosalexandrou.fuse_test_v11.interfaces;
 /**
  * Created by Kyriakos on 12/12/2015.
  * <p/>
- * have an activity implement this interface to handle the progressBar logic.
- * In this way it's possible to encapsulate the progress bar logic to it's main class and
- * at the same time to provide access to access the progress bar from other classes
- * such as fragments
+ * Program to an interface, not an implementation.
  */
 public interface HasProgressBar {
 

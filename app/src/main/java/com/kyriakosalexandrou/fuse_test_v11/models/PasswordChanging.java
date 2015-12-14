@@ -1,9 +1,5 @@
 package com.kyriakosalexandrou.fuse_test_v11.models;
 
-/**
- * Created by Kyriakos on 10/12/2015.
- */
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
