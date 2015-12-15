@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,5 +59,24 @@ public class Util {
         context.getResources().getValue(dimenFloatResId, typedValue, true);
         return typedValue.getFloat();
     }
+
+    /**
+     * gets the root view from the current context
+     * @param context the current context
+     * @return the root view
+     */
+    public static ViewGroup getRootView(Context context) {
+        ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(android.R.id.content).getRootView();
+        return layout;
+    }
+
+    public static LayoutInflater getLayoutInflater(Context context) {
+        LayoutInflater LayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (LayoutInflater == null) {
+            throw new AssertionError("LayoutInflater not found.");
+        }
+        return LayoutInflater;
+    }
+
 
 }

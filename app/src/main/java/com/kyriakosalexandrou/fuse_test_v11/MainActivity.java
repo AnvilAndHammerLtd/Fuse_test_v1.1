@@ -1,13 +1,13 @@
 package com.kyriakosalexandrou.fuse_test_v11;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.kyriakosalexandrou.fuse_test_v11.fragments.CompanyFragment;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonActivityUiLogicHelper;
 
 import retrofit.RestAdapter;
@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
     public static final String BASE_URL = "https:/";
 
     public static RestAdapter REST_ADAPTER;
-    private View mParentContainer;
-    private SimpleProgressBarHelper mSimpleProgressBarHelper;
+    private ProgressBarHelper mProgressBarHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         bindViews();
         setListeners();
 
-        mSimpleProgressBarHelper = new SimpleProgressBarHelper(mParentContainer);
+        mProgressBarHelper = new ProgressBarHelper(this, ProgressBarHelper.ProgressBarSize.FULL_SCREEN);
 
         REST_ADAPTER = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL).setEndpoint(BASE_URL).build();
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
 
     @Override
     public void bindViews() {
-        mParentContainer = findViewById(R.id.parentContainer);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
 
     private void goToCompanyFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        CompanyFragment companyFragment = CompanyFragment.newInstance(mSimpleProgressBarHelper);
+        CompanyFragment companyFragment = CompanyFragment.newInstance(mProgressBarHelper);
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment, companyFragment, CompanyFragment.TAG);
         ft.addToBackStack(null);

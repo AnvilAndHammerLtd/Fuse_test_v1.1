@@ -21,4 +21,37 @@
         <item name="android:background">@android:color/white</item>
     </style>
 
+    <style name="progress_bar_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="progress_bar_small" parent="android:Widget.DeviceDefault.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="progress_bar_large" parent="android:Widget.DeviceDefault.ProgressBar.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="progress_bar_full_screen" parent="android:Widget.DeviceDefault.ProgressBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+
 </resources>

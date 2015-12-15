@@ -18,7 +18,7 @@ import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonFragmentUiLogicHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.HasProgressBar;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
@@ -47,14 +47,14 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     public CompanyFragment() {
     }
 
-    public static CompanyFragment newInstance(SimpleProgressBarHelper simpleProgressBarHelper) {
+    public static CompanyFragment newInstance(ProgressBarHelper progressBarHelper) {
         CompanyFragment fragment = new CompanyFragment();
-        fragment.setProgressBarHelper(simpleProgressBarHelper);
+        fragment.setProgressBarHelper(progressBarHelper);
         return fragment;
     }
 
-    private void setProgressBarHelper(SimpleProgressBarHelper mSimpleProgressBarHelper) {
-        this.mProgressBarHelper = mSimpleProgressBarHelper;
+    private void setProgressBarHelper(ProgressBarHelper mProgressBarHelper) {
+        this.mProgressBarHelper = mProgressBarHelper;
     }
 
     @Nullable
