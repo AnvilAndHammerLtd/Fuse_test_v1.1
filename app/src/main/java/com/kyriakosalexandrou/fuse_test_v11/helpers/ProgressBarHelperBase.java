@@ -1,6 +1,7 @@
 package com.kyriakosalexandrou.fuse_test_v11.helpers;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +25,13 @@ public abstract class ProgressBarHelperBase {
      * prepares the progressBar object
      *
      * @param context         the context
-     * @param progressBarSize the progressBar size, can be one of
-     *                        {@link ProgressBarSize#SMALL}
+     * @param progressBarSize Can be one of {@link ProgressBarSize#SMALL}
      *                        {@link ProgressBarSize#LARGE}
      *                        {@link ProgressBarSize#FULL_SCREEN}
+     *                        <p/>
+     *                        if null is passed then the {@link ProgressBarSize#SMALL} is used
      */
-    public ProgressBarHelperBase(Context context, ProgressBarSize progressBarSize) {
+    public ProgressBarHelperBase(Context context, @Nullable ProgressBarSize progressBarSize) {
         if (context != null) {
             mProgressBarContainer = createProgressBarContainer(context, progressBarSize);
             mProgressBar = createProgressBar(mProgressBarContainer);
@@ -47,7 +49,7 @@ public abstract class ProgressBarHelperBase {
         return mProgressBar;
     }
 
-    private View createProgressBarContainer(Context context, ProgressBarSize progressBarSize) {
+    private View createProgressBarContainer(Context context, @Nullable ProgressBarSize progressBarSize) {
         LayoutInflater layoutInflater = Util.getLayoutInflater(context);
         View progressBarContainer = inflateProgressBarView(layoutInflater, progressBarSize);
 
@@ -57,7 +59,7 @@ public abstract class ProgressBarHelperBase {
         return progressBarContainer;
     }
 
-    private View inflateProgressBarView(LayoutInflater layoutInflater, ProgressBarSize progressBarSize) {
+    private View inflateProgressBarView(LayoutInflater layoutInflater, @Nullable ProgressBarSize progressBarSize) {
         View progressBarContainer;
 
         switch (progressBarSize) {

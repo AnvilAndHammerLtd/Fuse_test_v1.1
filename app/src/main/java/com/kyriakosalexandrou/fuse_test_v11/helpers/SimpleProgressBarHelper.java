@@ -16,10 +16,11 @@ public class SimpleProgressBarHelper extends ProgressBarHelperBase {
      * prepares the progressBar object
      *
      * @param context         the context
-     * @param progressBarSize the progressBar size, can be one of
-     *                        {@link ProgressBarSize#SMALL}
+     * @param progressBarSize Can be one of {@link ProgressBarSize#SMALL}
      *                        {@link ProgressBarSize#LARGE}
      *                        {@link ProgressBarSize#FULL_SCREEN}
+     *                        <p/>
+     *                        if null is passed then the {@link ProgressBarSize#SMALL} is used
      */
     public SimpleProgressBarHelper(Context context, ProgressBarSize progressBarSize) {
         super(context, progressBarSize);

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="900782d7-7138-47fe-ab4b-dfb212048080" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java" />
-      <change type="DELETED" beforePath="C:\Users\Kyriakos\Documents\GitHub\Fuse_test_v1.1\app\src\main\java\com\kyriakosalexandrou\fuse_test_v11\interfaces\HasProgressBar.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/fragments/CompanyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/fragments/CompanyFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/Util.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/Util.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fuse_test_v1.1.iws" />
@@ -41,11 +37,11 @@
           <file leaf-file-name="ProgressBarHelperBase.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.61926603">
-                  <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.74311924">
+                  <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
                   <folding>
-                    <element signature="e#1596#1597#0" expanded="true" />
-                    <element signature="e#1631#1632#0" expanded="true" />
+                    <element signature="e#1728#1729#0" expanded="true" />
+                    <element signature="e#1763#1764#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -78,8 +74,8 @@
           <file leaf-file-name="SimpleProgressBarHelper.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.565367">
-                  <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5848624">
+                  <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -1632,8 +1628,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/fragments/CompanyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ComplexProgressBarHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java" />
       </list>
     </option>
   </component>
@@ -2145,22 +2141,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61926603">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="e#1596#1597#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5848624">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/SimpleProgressBarHelper.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kyriakosalexandrou/fuse_test_v11/helpers/ProgressBarHelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.565367">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.74311924">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
