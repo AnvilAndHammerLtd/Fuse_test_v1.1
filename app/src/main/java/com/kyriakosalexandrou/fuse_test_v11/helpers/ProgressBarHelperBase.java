@@ -9,26 +9,27 @@ import android.widget.ProgressBar;
 
 import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
-import com.kyriakosalexandrou.fuse_test_v11.interfaces.HasProgressBar;
 
 /**
- * Created by Kyriakos on 14/12/2015.
+ * Created by Kyriakos on 18/12/2015.
  * <p/>
- * Preferring composition over inheritance.
- * Simply create an instance of this class to the class
- * that requires a progressBar and the logic would be handled from here.
+ * Abstract base class for common progress bar logic
  */
-public class ProgressBarHelper implements HasProgressBar {
-    private static final String TAG = ProgressBarHelper.class.getSimpleName();
+public abstract class ProgressBarHelperBase {
+    private static final String TAG = ProgressBarHelperBase.class.getSimpleName();
     private ProgressBar mProgressBar;
     private View mProgressBarContainer;
 
     /**
      * prepares the progressBar object
      *
-     * @param context the context
+     * @param context         the context
+     * @param progressBarSize the progressBar size, can be one of
+     *                        {@link ProgressBarSize#SMALL}
+     *                        {@link ProgressBarSize#LARGE}
+     *                        {@link ProgressBarSize#FULL_SCREEN}
      */
-    public ProgressBarHelper(Context context, ProgressBarSize progressBarSize) {
+    public ProgressBarHelperBase(Context context, ProgressBarSize progressBarSize) {
         if (context != null) {
             mProgressBarContainer = createProgressBarContainer(context, progressBarSize);
             mProgressBar = createProgressBar(mProgressBarContainer);
@@ -42,13 +43,13 @@ public class ProgressBarHelper implements HasProgressBar {
      *
      * @return the progress bar
      */
-    public ProgressBar getProgressBar() {
+    public final ProgressBar getProgressBar() {
         return mProgressBar;
     }
 
     private View createProgressBarContainer(Context context, ProgressBarSize progressBarSize) {
         LayoutInflater layoutInflater = Util.getLayoutInflater(context);
-        View progressBarContainer = inflateProgressBarView(progressBarSize, layoutInflater);
+        View progressBarContainer = inflateProgressBarView(layoutInflater, progressBarSize);
 
         ViewGroup layout = Util.getRootView(context);
         layout.addView(progressBarContainer);
@@ -56,7 +57,7 @@ public class ProgressBarHelper implements HasProgressBar {
         return progressBarContainer;
     }
 
-    private View inflateProgressBarView(ProgressBarSize progressBarSize, LayoutInflater layoutInflater) {
+    private View inflateProgressBarView(LayoutInflater layoutInflater, ProgressBarSize progressBarSize) {
         View progressBarContainer;
 
         switch (progressBarSize) {
@@ -83,14 +84,18 @@ public class ProgressBarHelper implements HasProgressBar {
         return progressBar;
     }
 
-    @Override
+    /**
+     * shows the progressBar
+     */
     public void showProgressBar() {
         if (mProgressBarContainer != null) {
             mProgressBarContainer.setVisibility(View.VISIBLE);
         }
     }
 
-    @Override
+    /**
+     * hides the progressBar
+     */
     public void hideProgressBar() {
         if (mProgressBarContainer != null) {
             mProgressBarContainer.setVisibility(View.GONE);
@@ -99,8 +104,24 @@ public class ProgressBarHelper implements HasProgressBar {
 
     /**
      * different progress bar sizes
+     * <p/>
+     * can be one of
+     * {@link ProgressBarSize#SMALL}
+     * {@link ProgressBarSize#LARGE}
+     * {@link ProgressBarSize#FULL_SCREEN}
      */
     public enum ProgressBarSize {
-        SMALL, LARGE, FULL_SCREEN
+        /**
+         * a small sized progress bar
+         */
+        SMALL,
+        /**
+         * a large sized progress bar
+         */
+        LARGE,
+        /**
+         * the progress bar takes the full width and height of the screen
+         */
+        FULL_SCREEN
     }
 }

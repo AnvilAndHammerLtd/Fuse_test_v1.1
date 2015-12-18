@@ -77,6 +77,4 @@ public class Util {
         }
         return LayoutInflater;
     }
-
-
 }

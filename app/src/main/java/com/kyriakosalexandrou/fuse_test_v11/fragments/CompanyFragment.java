@@ -18,9 +18,9 @@ import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelperBase;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonFragmentUiLogicHelper;
-import com.kyriakosalexandrou.fuse_test_v11.interfaces.HasProgressBar;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
 import com.kyriakosalexandrou.fuse_test_v11.widgets.ClearableEditText;
@@ -42,19 +42,19 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
 
     private ClearableEditText mCompanyNameClearableEditText;
     private ImageView mCompanyImage;
-    private HasProgressBar mProgressBarHelper;
+    private ProgressBarHelperBase mProgressBarHelper;
 
     public CompanyFragment() {
     }
 
-    public static CompanyFragment newInstance(ProgressBarHelper progressBarHelper) {
+    public static CompanyFragment newInstance(ProgressBarHelperBase simpleProgressBarHelper) {
         CompanyFragment fragment = new CompanyFragment();
-        fragment.setProgressBarHelper(progressBarHelper);
+        fragment.setProgressBarHelper(simpleProgressBarHelper);
         return fragment;
     }
 
-    private void setProgressBarHelper(ProgressBarHelper mProgressBarHelper) {
-        this.mProgressBarHelper = mProgressBarHelper;
+    private void setProgressBarHelper(ProgressBarHelperBase mSimpleProgressBarHelper) {
+        this.mProgressBarHelper = mSimpleProgressBarHelper;
     }
 
     @Nullable
