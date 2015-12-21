@@ -52,4 +52,10 @@ public class MainActivity extends AppCompatActivity implements CommonActivityUiL
         ft.commit();
         fm.executePendingTransactions();
     }
+    
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
