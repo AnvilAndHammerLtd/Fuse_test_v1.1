@@ -14,12 +14,20 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_main);
+
+        setProgressBarHelper(
+                BaseActivity.PROGRESS_BAR_HELPER_FACTORY.getProgressBar(
+                        this,
+                        SimpleProgressBarHelper.ProgressBarSize.FULL_SCREEN
+                )
+        );
+
         goToCompanyFragment();
     }
 
     private void goToCompanyFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        CompanyFragment companyFragment = CompanyFragment.newInstance();
+        CompanyFragment companyFragment = CompanyFragment.newInstance(getProgressBarHelper());
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment, companyFragment, CompanyFragment.TAG);
         ft.commit();

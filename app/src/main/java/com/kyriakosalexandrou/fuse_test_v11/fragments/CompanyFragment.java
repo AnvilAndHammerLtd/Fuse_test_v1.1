@@ -17,7 +17,7 @@ import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.BaseProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
 import com.kyriakosalexandrou.fuse_test_v11.widgets.ClearableEditText;
@@ -43,15 +43,10 @@ public class CompanyFragment extends BaseFragment {
     public CompanyFragment() {
     }
 
-    public static CompanyFragment newInstance() {
+    public static CompanyFragment newInstance(BaseProgressBarHelper baseProgressBarHelper) {
         CompanyFragment fragment = new CompanyFragment();
 
-        fragment.setProgressBarHelper(
-                BaseActivity.PROGRESS_BAR_HELPER_FACTORY.getProgressBar(
-                        fragment.getContext(),
-                        SimpleProgressBarHelper.ProgressBarSize.SMALL
-                )
-        );
+        fragment.setProgressBarHelper(baseProgressBarHelper);
         return fragment;
     }
 
