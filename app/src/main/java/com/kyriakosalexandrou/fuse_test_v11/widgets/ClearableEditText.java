@@ -131,7 +131,6 @@ public class ClearableEditText extends RelativeLayout {
     }
 
     public interface ClearableEditTextCallbacks {
-
         void afterTextChanged(Editable s);
 
         boolean onEditorAction(TextView v, int actionId, KeyEvent event);

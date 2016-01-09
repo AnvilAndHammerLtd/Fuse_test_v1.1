@@ -13,13 +13,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kyriakosalexandrou.fuse_test_v11.MainActivity;
+import com.kyriakosalexandrou.fuse_test_v11.BaseActivity;
 import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
 import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelperBase;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonFragmentUiLogicHelper;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
@@ -105,7 +104,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
         if (companyName.length() > 0) {
             Util.dismissSoftKeyBoard(getActivity());
             mProgressBarHelper.showProgressBar();
-            CompanyService mCompanyService = new CompanyService(MainActivity.REST_ADAPTER);
+            CompanyService mCompanyService = new CompanyService(BaseActivity.REST_ADAPTER);
             ErrorEvent errorEvent = new ErrorEvent(getResources().getString(R.string.get_company_request_failure));
             mCompanyService.getCompanyRequest(companyName, new CompanyEvent(errorEvent));
         }
