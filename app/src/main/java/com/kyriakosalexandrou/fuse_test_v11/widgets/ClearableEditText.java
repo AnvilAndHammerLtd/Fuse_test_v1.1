@@ -21,7 +21,7 @@ import com.kyriakosalexandrou.fuse_test_v11.Util;
  * custom widget for an editText with a clear button
  */
 public class ClearableEditText extends RelativeLayout {
-    public static final String TAG = ClearableEditText.class.getName();
+    private static final String TAG = ClearableEditText.class.getName();
 
     private static float ENABLED_CLEAR_BUTTON_ALPHA;
     private static float DISABLED_CLEAR_BUTTON_ALPHA;

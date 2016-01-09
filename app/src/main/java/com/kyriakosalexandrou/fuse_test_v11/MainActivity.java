@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.kyriakosalexandrou.fuse_test_v11.fragments.CompanyFragment;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelperBase;
 import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
 
 
@@ -20,7 +19,7 @@ public class MainActivity extends BaseActivity {
 
     private void goToCompanyFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        CompanyFragment companyFragment = CompanyFragment.newInstance(getProgressBarFullScreen());
+        CompanyFragment companyFragment = CompanyFragment.newInstance();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment, companyFragment, CompanyFragment.TAG);
         ft.commit();

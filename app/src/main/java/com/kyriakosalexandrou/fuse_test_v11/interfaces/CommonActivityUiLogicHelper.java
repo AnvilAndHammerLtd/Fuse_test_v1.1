@@ -9,12 +9,12 @@ import android.os.Bundle;
  */
 public interface CommonActivityUiLogicHelper {
     /**
-     *  * <p><em>Derived classes must call through to the super class's
+     * <p>Derived classes must call through to the super class's
      * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
+     * thrown.</p>
      *
      * @param savedInstanceState
-     * @param layoutId the layout id to load to the activity
+     * @param layoutId           the layout id to load to the activity
      */
     void onCreate(Bundle savedInstanceState, int layoutId);
 

@@ -3,8 +3,8 @@ package com.kyriakosalexandrou.fuse_test_v11;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelperBase;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.BaseProgressBarHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.FactoryProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonActivityUiLogicHelper;
 
 import retrofit.RestAdapter;
@@ -15,19 +15,22 @@ import retrofit.RestAdapter;
 public class BaseActivity extends AppCompatActivity implements CommonActivityUiLogicHelper {
     private static final String TAG = BaseActivity.class.getName();
     public static final String BASE_URL = "https:/";
-    public static RestAdapter REST_ADAPTER;
-    private ProgressBarHelperBase mProgressBarFullScreen;
+    public static final FactoryProgressBarHelper PROGRESS_BAR_HELPER_FACTORY = new FactoryProgressBarHelper();
+    public static RestAdapter REST_ADAPTER = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL).setEndpoint(BASE_URL).build();
+    private BaseProgressBarHelper mProgressBarHelper;
 
-    public ProgressBarHelperBase getProgressBarFullScreen() {
-        return mProgressBarFullScreen;
+    public BaseProgressBarHelper getProgressBarHelper() {
+        return mProgressBarHelper;
+    }
+
+    public void setProgressBarHelper(BaseProgressBarHelper baseProgressBarHelper) {
+        mProgressBarHelper = baseProgressBarHelper;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState, int layoutId) {
         super.onCreate(savedInstanceState);
         setContentView(layoutId);
-        mProgressBarFullScreen = new SimpleProgressBarHelper(this, SimpleProgressBarHelper.ProgressBarSize.FULL_SCREEN);
-        REST_ADAPTER = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL).setEndpoint(BASE_URL).build();
     }
 
     @Override

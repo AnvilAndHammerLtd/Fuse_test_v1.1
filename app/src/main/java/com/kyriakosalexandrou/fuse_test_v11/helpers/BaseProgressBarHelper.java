@@ -16,8 +16,8 @@ import com.kyriakosalexandrou.fuse_test_v11.Util;
  * <p/>
  * Abstract base class for common progress bar logic
  */
-public abstract class ProgressBarHelperBase {
-    private static final String TAG = ProgressBarHelperBase.class.getSimpleName();
+public abstract class BaseProgressBarHelper {
+    private static final String TAG = BaseProgressBarHelper.class.getSimpleName();
     private ProgressBar mProgressBar;
     private View mProgressBarContainer;
 
@@ -31,7 +31,7 @@ public abstract class ProgressBarHelperBase {
      *                        <p/>
      *                        if null is passed then the {@link ProgressBarSize#SMALL} is used
      */
-    public ProgressBarHelperBase(Context context, @Nullable ProgressBarSize progressBarSize) {
+    public BaseProgressBarHelper(Context context, @Nullable ProgressBarSize progressBarSize) {
         if (context != null) {
             mProgressBarContainer = createProgressBarContainer(context, progressBarSize);
             mProgressBar = createProgressBar(mProgressBarContainer);

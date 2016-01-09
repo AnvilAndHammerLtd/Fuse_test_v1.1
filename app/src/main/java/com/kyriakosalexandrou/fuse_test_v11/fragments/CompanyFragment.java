@@ -3,7 +3,6 @@ package com.kyriakosalexandrou.fuse_test_v11.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -18,8 +17,7 @@ import com.kyriakosalexandrou.fuse_test_v11.R;
 import com.kyriakosalexandrou.fuse_test_v11.Util;
 import com.kyriakosalexandrou.fuse_test_v11.events.CompanyEvent;
 import com.kyriakosalexandrou.fuse_test_v11.events.ErrorEvent;
-import com.kyriakosalexandrou.fuse_test_v11.helpers.ProgressBarHelperBase;
-import com.kyriakosalexandrou.fuse_test_v11.interfaces.CommonFragmentUiLogicHelper;
+import com.kyriakosalexandrou.fuse_test_v11.helpers.SimpleProgressBarHelper;
 import com.kyriakosalexandrou.fuse_test_v11.models.Company;
 import com.kyriakosalexandrou.fuse_test_v11.services.CompanyService;
 import com.kyriakosalexandrou.fuse_test_v11.widgets.ClearableEditText;
@@ -32,7 +30,7 @@ import de.greenrobot.event.EventBus;
  * <p/>
  * Responsible for all the Company logic
  */
-public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHelper {
+public class CompanyFragment extends BaseFragment {
     public static final String TAG = CompanyFragment.class.getName();
 
     private static final int DEFAULT_COMPANY_BG_COLOR = Color.WHITE;
@@ -41,19 +39,20 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
 
     private ClearableEditText mCompanyNameClearableEditText;
     private ImageView mCompanyImage;
-    private ProgressBarHelperBase mProgressBarHelper;
 
     public CompanyFragment() {
     }
 
-    public static CompanyFragment newInstance(ProgressBarHelperBase simpleProgressBarHelper) {
+    public static CompanyFragment newInstance() {
         CompanyFragment fragment = new CompanyFragment();
-        fragment.setProgressBarHelper(simpleProgressBarHelper);
-        return fragment;
-    }
 
-    private void setProgressBarHelper(ProgressBarHelperBase mSimpleProgressBarHelper) {
-        this.mProgressBarHelper = mSimpleProgressBarHelper;
+        fragment.setProgressBarHelper(
+                BaseActivity.PROGRESS_BAR_HELPER_FACTORY.getProgressBar(
+                        fragment.getContext(),
+                        SimpleProgressBarHelper.ProgressBarSize.SMALL
+                )
+        );
+        return fragment;
     }
 
     @Nullable
@@ -103,7 +102,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     private void getCompany(String companyName) {
         if (companyName.length() > 0) {
             Util.dismissSoftKeyBoard(getActivity());
-            mProgressBarHelper.showProgressBar();
+            getProgressBarHelper().showProgressBar();
             CompanyService mCompanyService = new CompanyService(BaseActivity.REST_ADAPTER);
             ErrorEvent errorEvent = new ErrorEvent(getResources().getString(R.string.get_company_request_failure));
             mCompanyService.getCompanyRequest(companyName, new CompanyEvent(errorEvent));
@@ -113,7 +112,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
     public void onEventMainThread(CompanyEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
         setCompanyUiToValid(event.getCompany());
-        mProgressBarHelper.hideProgressBar();
+        getProgressBarHelper().hideProgressBar();
     }
 
     private void setCompanyUiToValid(Company company) {
@@ -135,7 +134,7 @@ public class CompanyFragment extends Fragment implements CommonFragmentUiLogicHe
 
     public void onEventMainThread(ErrorEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
-        mProgressBarHelper.hideProgressBar();
+        getProgressBarHelper().hideProgressBar();
         Util.showToastMessageCentered(getContext(), event.getErrorMessage());
         mCompanyNameClearableEditText.getEditText().setBackgroundColor(INVALID_COMPANY_BG_COLOR);
     }
